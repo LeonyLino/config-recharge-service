@@ -1,0 +1,17 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange: payment-exchange
+  max-attempts: 1
+  payment:
+    request:
+      routing-key:
+        main: routingKey.payment.request.main
+      queues:
+        main: queue.payment.resquest.main
+        dead: queue.payment.resquest.dead

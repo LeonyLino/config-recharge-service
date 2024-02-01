@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active:
+    - dev
+    - native
+
+---
+spring:
+  application:
+    name: config-service
+  config:
+    activate:
+      on-profile: dev,native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: classpath:/config
+  security:
+    user:
+      name: ${SECURITY_USERNAME:mirante}
+      password: ${SECURITY_PASSWORD:mirante@123}
