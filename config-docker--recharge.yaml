@@ -1,0 +1,25 @@
+version: "3.7"
+
+volumes:
+  logs-folder:
+    name: ${log_rabbitmq_management}
+    driver: local
+
+services:
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_recharge
+    ports: 
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - /docker_conf/rabbitmq/data/:/var/lib/rabbitmq/
+    restart: always
+    networks:
+      - compose-network
+
+networks:
+  compose-network:
+    external: true
+    name: compose-network
